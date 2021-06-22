@@ -1,0 +1,66 @@
+{
+    "name": "daguilarm/live-tables",
+    "description": "A dynamic table component for Laravel Livewire and AlpineJS",
+    "keywords": [
+        "livewire",
+        "alpineJS",
+        "package",
+        "datatables",
+        "tables",
+        "laravel",
+        "daguilarm"
+    ],
+    "homepage": "https://github.com/daguilarm/live-tables",
+    "license": "MIT",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Damián Aguilar",
+            "email": "damian.aguilarm@gmail.com",
+            "homepage": "https://daguilar.dev",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^8.0",
+        "barryvdh/laravel-dompdf": "^0.9.0",
+        "livewire/livewire": "^2.5",
+        "maatwebsite/excel": "^3.1",
+        "symfony/http-kernel": "^5.0"
+    },
+    "require-dev": {
+        "calebporzio/sushi": "^2.2",
+        "ext-sqlite3": "*",
+        "nunomaduro/phpinsights": "dev-master",
+        "orchestra/testbench-dusk": "^6.7",
+        "phpunit/phpunit": "^9.4",
+        "psy/psysh": "^0.10.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Daguilarm\\LiveTables\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Daguilarm\\LiveTables\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "psalm": "vendor/bin/psalm",
+        "test": "vendor/bin/phpunit --colors=always",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Daguilarm\\LiveTables\\LiveTablesServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

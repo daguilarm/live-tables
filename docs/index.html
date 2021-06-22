@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Laravel Livewire Tables for Tailwind - Documentation</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="description" content="Documentation for Livewire Tables. A dynamic table component for Laravel Livewire, Tailwind and AlpineJS.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta property="og:title" content="Laravel Livewire Tables for Tailwind - Documentation"/>
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://daguilarm.github.io/livewire-tables/"/>
+    <meta property="og:description" content="Documentation for Livewire Tables. A dynamic table component for Laravel Livewire, Tailwind and AlpineJS." />
+    <link rel="home" href="https://daguilarm.github.io/livewire-tables/">
+    <link rel="apple-touch-icon" sizes="57x57" href="https://daguilar.dev/assets/img/favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="https://daguilar.dev/assets/img/favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="https://daguilar.dev/assets/img/favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="https://daguilar.dev/assets/img/favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="https://daguilar.dev/assets/img/favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="https://daguilar.dev/assets/img/favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="https://daguilar.dev/assets/img/favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="https://daguilar.dev/assets/img/favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://daguilar.dev/assets/img/favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="https://daguilar.dev/assets/img/favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://daguilar.dev/assets/img/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="https://daguilar.dev/assets/img/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://daguilar.dev/assets/img/favicon/favicon-16x16.png">
+    <link rel="manifest" href="https://daguilar.dev/assets/img/favicon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="twitter:site" content="@daguilarm">
+    <meta name="twitter:creator" content="@daguilarm">
+    <meta name="twitter:title" content="Laravel Livewire Tables for Tailwind - Documentation">
+    <meta name="twitter:description" content="Documentation for Livewire Tables. A dynamic table component for Laravel Livewire, Tailwind and AlpineJS.">
+    <meta name="google-site-verification" content="-kQ_tWP4Oab4wvHS2Juba7ECm5_DBNpOrEgNxELYGfw" />
+
+    <!-- Theme: Simple -->
+    <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify-themeable@0/dist/css/theme-simple.min.css">
+    <link rel="stylesheet" href="./_css/custom.css">
+</head>
+<body>
+    <div data-app id="main"></div>
+    <script>
+        window.$docsify = {
+            // requestHeaders: {
+            //     'cache-control': 'no-cache',
+            // },
+            el: '#main',
+            name: 'Belich Tables',
+            repo: 'daguilarm/belich-tables',
+            loadSidebar: '_nav/sidebar.md',
+            subMaxLevel: 2,
+            maxLevel: 2,
+            auto2top: true,
+            homepage: 'home.md',
+            search: 'auto',// default
+            footer: {
+                copy: '<div><b>Belich Tables</b> &copy; 2020 - ' + new Date().getFullYear() + ' - </div>',
+                auth: '<div><b>Author</b>: <a href="https://daguilar.dev">Damián Aguilar</a> - </div><div style="padding-top: 5px"><a href="https://twitter.com/daguilarm" target="_blank">' + twitter() + '</a></div>',
+                pre: '<div style="margin-top: 3rem"></div>',
+            },
+        }
+        // Service worker
+        if (typeof navigator.serviceWorker !== 'undefined') {
+            navigator.serviceWorker.register('sw.js')
+        }
+
+        function twitter() {
+            return '<svg xmlns="http://www.w3.org/2000/svg" style="margin-left: .7rem; width: 1.2rem; height: 1.2rem; fill: currentColor; color: #ccc;" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 512 512" xml:space="preserve"><path d="M512,97.248c-19.04,8.352-39.328,13.888-60.48,16.576c21.76-12.992,38.368-33.408,46.176-58.016 c-20.288,12.096-42.688,20.64-66.56,25.408C411.872,60.704,384.416,48,354.464,48c-58.112,0-104.896,47.168-104.896,104.992 c0,8.32,0.704,16.32,2.432,23.936c-87.264-4.256-164.48-46.08-216.352-109.792c-9.056,15.712-14.368,33.696-14.368,53.056 c0,36.352,18.72,68.576,46.624,87.232c-16.864-0.32-33.408-5.216-47.424-12.928c0,0.32,0,0.736,0,1.152 c0,51.008,36.384,93.376,84.096,103.136c-8.544,2.336-17.856,3.456-27.52,3.456c-6.72,0-13.504-0.384-19.872-1.792    c13.6,41.568,52.192,72.128,98.08,73.12c-35.712,27.936-81.056,44.768-130.144,44.768c-8.608,0-16.864-0.384-25.12-1.44    C46.496,446.88,101.6,464,161.024,464c193.152,0,298.752-160,298.752-298.688c0-4.64-0.16-9.12-0.384-13.568 C480.224,136.96,497.728,118.496,512,97.248z"/></svg>';
+        }
+    </script>
+    <!-- Docsify v4 -->
+    <script src="https://cdn.jsdelivr.net/npm/docsify@4"></script>
+    <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/docsify-copy-code"></script>
+    <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/zoom-image.min.js"></script>
+    <script src="//unpkg.com/docsify-footer-enh/dist/docsify-footer-enh.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/prismjs/components/prism-markdown.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-php.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-bash.min.js"></script>
+</body>
+</html>
