@@ -8,11 +8,18 @@
             LiveTables::include('components.flash-message')
         ) --}}
 
-        {{-- Include the table loading view --}}
-        {{-- @includeWhen(
-            $tableOptions->get('loading'),
-            LiveTables::include('sections.loading')
-        ) --}}
+        {{-- Include the table loading state --}}
+        @if($options['loading'])
+            <div
+                wire:loading
+                class="pulse pulse-vertical-align"
+            >
+                <div dusk="belich-tables-loading">
+                    <div class="double-bounce1"></div>
+                    <div class="double-bounce2"></div>
+                </div>
+            </div>
+        @endif
 
         <div class="py-2 align-middle inline-block sm:px-6 lg:px-8">
             <div class="border-b border-gray-200 sm:rounded-lg">
@@ -33,18 +40,14 @@
                     >
 
                         {{-- Include the table head --}}
-{{--                         @includeWhen(
-                            data_get($tableOptions, 'table.head'),
-                            LiveTables::include('sections.thead')
-                        ) --}}
+                        @includeWhen(
+                            $options['tableHeadShow'],
+                            LiveTables::include('table.head')
+                        )
 
                         {{-- Include the table data --}}
                         <tbody>
-                            {{-- @if($models->isEmpty())
-                                @include(LiveTables::include('sections.empty'))
-                            @else
-                                @include(LiveTables::include('sections.data'))
-                            @endif --}}
+                            @include(LiveTables::include('table.body'))
                         </tbody>
 
                         {{-- Include the table foot --}}
@@ -55,9 +58,9 @@
                     </table>
 
                     {{-- Include the pagination --}}
-                    {{-- @if($options['paginationShow'])
-                        {{ $models->links(LiveTables::include('sections.pagination')) }}
-                    @endif --}}
+                    @if($options['paginationShow'])
+                        {{ $models->links(LiveTables::include('table.pagination')) }}
+                    @endif
                 </div>
             </div>
         </div>

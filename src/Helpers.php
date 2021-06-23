@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Daguilarm\LiveTables;
 
-use Daguilarm\BelichTables\Views\Column;
+use Daguilarm\LiveTables\Views\Column;
 use Illuminate\Support\Collection;
 
 final class Helpers
