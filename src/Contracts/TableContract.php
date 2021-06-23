@@ -16,6 +16,13 @@ interface TableContract
     public function columns(): array;
 
     /**
+     * Set the filters.
+     *
+     * @return  array<string>
+     */
+    public function filters(): array;
+
+    /**
      * Set the query builder.
      */
     public function query(): Builder;

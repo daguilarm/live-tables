@@ -55,9 +55,6 @@ abstract class TableComponent extends Component implements TableContract
         // Set the live table options
         $this->options = $this->mergeOptions();
 
-        // Set the pagination theme
-        $this->paginationTheme = 'tailwind';
-
         // // Init the column's filter
         $this->sqlBuilder = $this->query();
 
@@ -82,7 +79,22 @@ abstract class TableComponent extends Component implements TableContract
     public function render(): View
     {
         return view($this->viewName(), [
+            'columns' => $this->columns(),
+            'filters' => $this->filters(),
+            'models' => $this->options['pagination']
+                ? $this->models()->paginate((int) $this->options['perPage'])
+                : $this->models()->get(),
             'options' => $this->options,
         ]);
+    }
+
+    /**
+     * Set the default filters.
+     *
+     * @return  array<string>
+     */
+    public function filters(): array
+    {
+        return [];
     }
 }

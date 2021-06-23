@@ -7,16 +7,6 @@ namespace Daguilarm\BelichTables\Components\Table;
 trait Pagination
 {
     /**
-     * The default pagination theme.
-     */
-    protected string $paginationTheme;
-
-    /**
-     * Displays per page and pagination links.
-     */
-    protected bool $showPagination = true;
-
-    /**
      * https://laravel-livewire.com/docs/pagination
      * Resetting Pagination After Filtering Data.
      */

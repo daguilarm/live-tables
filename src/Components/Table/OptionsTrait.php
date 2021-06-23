@@ -46,7 +46,6 @@ trait OptionsTrait
         return [
             // Default
             'loading' => true,
-            'pagination' => true,
             'checkBoxesShow' => true,
             // Get the allowed formats and the selected one
             'exportOptions' => $this->exportAllowedFormats,
@@ -74,6 +73,9 @@ trait OptionsTrait
             // Columns
             'columnSortBy' => 'id',
             'columnSortDirection' => 'ASC',
+            // Pagination
+            'pagination' => true,
+            'paginationTheme' => 'tailwind',
         ];
     }
 }
