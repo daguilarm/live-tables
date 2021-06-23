@@ -74,7 +74,7 @@ trait OptionsTrait
             'columnSortBy' => 'id',
             'columnSortDirection' => 'ASC',
             // Pagination
-            'pagination' => true,
+            'paginationShow' => true,
             'paginationTheme' => 'tailwind',
         ];
     }

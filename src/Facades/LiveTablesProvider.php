@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Daguilarm\LiveTables\Facades;
 
-use Daguilarm\LiveTables\LiveTables;
+use Daguilarm\LiveTables\Helpers;
 use Illuminate\Support\ServiceProvider;
 
 final class LiveTablesProvider extends ServiceProvider
@@ -22,7 +22,7 @@ final class LiveTablesProvider extends ServiceProvider
     public function register(): void
     {
         $this->app->singleton('LiveTables', static function () {
-            return new LiveTables();
+            return new Helpers();
         });
     }
 }

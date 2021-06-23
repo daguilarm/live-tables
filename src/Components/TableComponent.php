@@ -16,6 +16,7 @@ use Daguilarm\LiveTables\Components\Table\RequestsTrait;
 use Daguilarm\LiveTables\Components\Table\SearchsTrait;
 use Daguilarm\LiveTables\Components\Table\SortsTrait;
 use Daguilarm\LiveTables\Contracts\TableContract;
+use Daguilarm\LiveTables\Facades\LiveTables;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\View\View;
 use Livewire\Component;
@@ -68,9 +69,9 @@ abstract class TableComponent extends Component implements TableContract
     /**
      * Set the view.
      */
-    public function viewName(?string $viewName = null): string
+    public function viewName(?string $path = null): string
     {
-        return $viewName ?? 'live-tables::table-components';
+        return $path ?? LiveTables::include('table-components');
     }
 
     /**
@@ -81,7 +82,7 @@ abstract class TableComponent extends Component implements TableContract
         return view($this->viewName(), [
             'columns' => $this->columns(),
             'filters' => $this->filters(),
-            'models' => $this->options['pagination']
+            'models' => $this->options['paginationShow']
                 ? $this->models()->paginate((int) $this->options['perPage'])
                 : $this->models()->get(),
             'options' => $this->options,
