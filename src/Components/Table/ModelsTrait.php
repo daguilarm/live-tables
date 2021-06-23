@@ -10,9 +10,11 @@ use Illuminate\Database\Eloquent\Builder;
 trait ModelsTrait
 {
     /**
-     * Set the model instance.
+     * Set the variables.
      */
     protected object $model;
+    protected object $sqlBuilder;
+    protected string $tableName;
 
     /**
      * Set the model builder.
@@ -40,7 +42,7 @@ trait ModelsTrait
             builder: $builder,
             columns: $this->columns(),
             search: $this->search,
-            showSearch: $this->showSearch,
+            showSearch: $this->options['search'],
         );
 
         // If the column is callable

@@ -45,7 +45,7 @@ trait FiltersTrait
     }
 
     /**
-     * Collect all the filters.
+     * Collect all the filters from App/Livewire/...Table.php
      */
     private function filtersAsCollection(): Collection
     {

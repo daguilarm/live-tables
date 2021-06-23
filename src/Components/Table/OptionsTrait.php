@@ -52,8 +52,9 @@ trait OptionsTrait
             'exportOptions' => $this->exportAllowedFormats,
             'exportAs' => [],
             // Per page configuration
-            'perPageOptions' => [10, 25, 50, 100, 300, 500],
             'perPage' => 25,
+            'perPageOptions' => [10, 25, 50, 100, 300, 500],
+            'perPageShow' => true,
             // Search field
             'search' => true,
             'searchReset' => true,

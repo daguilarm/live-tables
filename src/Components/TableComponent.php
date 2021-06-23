@@ -6,10 +6,14 @@ namespace Daguilarm\LiveTables\Components;
 
 use Daguilarm\LiveTables\Components\Table\CheckboxesTrait;
 use Daguilarm\LiveTables\Components\Table\DeletesTrait;
-use Daguilarm\LiveTables\Components\Table\FiltersTrait;
 use Daguilarm\LiveTables\Components\Table\ExportsTrait;
+use Daguilarm\LiveTables\Components\Table\FiltersTrait;
 use Daguilarm\LiveTables\Components\Table\ModelsTrait;
+use Daguilarm\LiveTables\Components\Table\OperationsTrait;
 use Daguilarm\LiveTables\Components\Table\OptionsTrait;
+use Daguilarm\LiveTables\Components\Table\RelationshipsTrait;
+use Daguilarm\LiveTables\Components\Table\RequestsTrait;
+use Daguilarm\LiveTables\Components\Table\SearchsTrait;
 use Daguilarm\LiveTables\Components\Table\SortsTrait;
 use Daguilarm\LiveTables\Contracts\TableContract;
 use Illuminate\Database\Eloquent\Builder;
@@ -27,7 +31,11 @@ abstract class TableComponent extends Component implements TableContract
         ExportsTrait,
         FiltersTrait,
         ModelsTrait,
+        OperationsTrait,
         OptionsTrait,
+        RelationshipsTrait,
+        RequestsTrait,
+        SearchsTrait,
         SortsTrait;
 
     /**
@@ -36,13 +44,6 @@ abstract class TableComponent extends Component implements TableContract
      * @var array<string>
      */
     protected $listeners = ['itemDelete', 'fileDownloadNotification'];
-
-    /**
-     * Variables.
-     */
-    protected string $paginationTheme;
-    protected Builder $sqlBuilder;
-    protected string $tableName;
 
     /**
      * TableComponent constructor.
@@ -81,7 +82,7 @@ abstract class TableComponent extends Component implements TableContract
     public function render(): View
     {
         return view($this->viewName(), [
-            'options' => $this->options(),
+            'options' => $this->options,
         ]);
     }
 }
