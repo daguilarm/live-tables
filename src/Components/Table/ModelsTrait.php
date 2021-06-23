@@ -82,7 +82,7 @@ trait ModelsTrait
     /**
      * Get current model instance.
      */
-    public function getTableName(Builder $builder): object
+    public function getTableName(Builder $builder): string
     {
         return $builder->getQuery()->from;
     }
