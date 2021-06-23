@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Daguilarm\LiveTables\Components;
 
+use Daguilarm\LiveTables\Components\Table\ExportsTrait;
+use Daguilarm\LiveTables\Components\Table\OptionsTrait;
 use Daguilarm\LiveTables\Contracts\TableContract;
 use Illuminate\View\View;
 use Livewire\Component;
@@ -14,7 +16,8 @@ use Livewire\WithPagination;
  */
 abstract class TableComponent extends Component implements TableContract
 {
-    protected array $exportAllowedFormats = ['xml', 'xmls', 'csv', 'pdf'];
+    use ExportsTrait,
+        OptionsTrait;
 
     /**
      * Delete listeners.
@@ -24,16 +27,14 @@ abstract class TableComponent extends Component implements TableContract
     protected $listeners = ['itemDelete', 'fileDownloadNotification'];
 
     /**
-     * Set the model instance.
-     */
-    protected object $model;
-
-    /**
      * TableComponent constructor.
      */
     public function __construct(?string $id = null)
     {
         parent::__construct($id);
+
+        // Set the live table options
+        $this->options = $this->mergeOptions();
 
         // // Set the pagination theme
         // $this->paginationTheme = 'tailwind';
@@ -62,63 +63,7 @@ abstract class TableComponent extends Component implements TableContract
     public function render(): View
     {
         return view($this->viewName(), [
-            'options' => $this->mergeOptions(),
+            'options' => $this->options(),
         ]);
-    }
-
-    /**
-     * Update the table options.
-     */
-    public function mergeOptions()
-    {
-        if(isset($this->options)) {
-            return collect($this->defaultOptions())
-                ->mapWithKeys(function($value, $key) {
-                    if(isset($this->options[$key])) {
-                        return [$key => $this->options[$key]];
-                    }
-                    return [$key => $value];
-                })
-                ->toArray();
-        }
-
-        return $this->defaultOptions();
-    }
-
-    /**
-     * Set the table options.
-     */
-    public function defaultOptions()
-    {
-        return [
-            'loading' => true,
-            'pagination' => true,
-            'checkBoxesShow' => true,
-            // Get the allowed formats and the selected one
-            'exportOptions' => $this->exportAllowedFormats,
-            'exportAs' => [],
-            // Per page configuration
-            'perPageOptions' => [10, 25, 50, 100, 300, 500],
-            'perPage' => 25,
-            // Search field
-            'search' => true,
-            'searchReset' => true,
-            // Table options
-            'tableAlternateBackground' => false,
-            'tableAlternateBackgroundColor' => 'bg-gray-100',
-            'tableRefresh' => false,
-            'tableRefreshInSeconds' => 5,
-            'tableHeadShow' => true,
-            'tableFooterShow' => false,
-            // Actions
-            'actionCreate' => false,
-            'actionCreateUrl' => '',
-            'actionShow' => true,
-            'actionUpdate' => true,
-            'actionDelete' => false,
-            // Columns
-            'columnSortBy' => 'id',
-            'columnSortDirection' => 'ASC',
-        ];
     }
 }
