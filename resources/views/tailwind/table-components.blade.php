@@ -29,6 +29,7 @@
                 <div class="bg-gray-50 text-gray-500 border border-gray-200 rounded-t-lg rounded-b-lg">
                     <table
                         class="table-auto w-full mt-1"
+                        id="{{ $options['id'] }}"
                         {{-- Refresh the table  --}}
                         @if ($options['tableRefresh'])
                             @if ($options['tableRefreshInSeconds'])
@@ -53,7 +54,7 @@
                         {{-- Include the table foot --}}
                         @includeWhen(
                             $options['tableFooterShow'],
-                            LiveTables::include('sections.footer')
+                            LiveTables::include('table.footer')
                         )
                     </table>
 

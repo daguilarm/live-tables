@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Daguilarm\LiveTables\Components\Table;
 
+use Illuminate\Support\Str;
+
 trait OptionsTrait
 {
     /**
@@ -45,6 +47,7 @@ trait OptionsTrait
     {
         return [
             // Default
+            'id' => Str::random(10),
             'loading' => true,
             'checkBoxesShow' => true,
             // Get the allowed formats and the selected one
