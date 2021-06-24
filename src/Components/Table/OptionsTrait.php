@@ -75,9 +75,9 @@ trait OptionsTrait
             'columnSortBy' => 'id',
             'columnSortDirection' => 'ASC',
             // Rows
-            'rowAlternateBackground' => false,
+            'rowAlternateBackground' => true,
             'rowBackgroundColor' => 'bg-white',
-            'rowBackgroundColorAlternate' => 'bg-gray-100',
+            'rowBackgroundColorAlternate' => 'bg-gray-50',
             // Pagination
             'paginationShow' => true,
             'paginationTheme' => 'tailwind',

@@ -18,7 +18,7 @@
         {{-- Get the table rows --}}
         @foreach($models as $model)
             <tr
-                class="{{ LiveTables::alternateTable($loop, $options)   }} bg-white border-b border-gray-150"
+                class="{{ LiveTables::alternateTable($loop, $options) }} border-b border-gray-150"
                 id="row_id_{{ $model->id }}"
                 dusk="row-id-{{ $model->id }}"
             >

@@ -39,7 +39,7 @@ final class Helpers
     public function alternateTable(object $loop, array $options)
     {
         if ($options['rowAlternateBackground']) {
-            if ($loop->even) {
+            if ($loop->odd) {
                 return $options['rowBackgroundColor'];
             }
             return $options['rowBackgroundColorAlternate'];
