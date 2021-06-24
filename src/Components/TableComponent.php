@@ -11,6 +11,7 @@ use Daguilarm\LiveTables\Components\Table\ExportsTrait;
 use Daguilarm\LiveTables\Components\Table\ModelsTrait;
 use Daguilarm\LiveTables\Components\Table\OperationsTrait;
 use Daguilarm\LiveTables\Components\Table\OptionsTrait;
+use Daguilarm\LiveTables\Components\Table\PerPagesTrait;
 use Daguilarm\LiveTables\Components\Table\RelationshipsTrait;
 use Daguilarm\LiveTables\Components\Table\RequestsTrait;
 use Daguilarm\LiveTables\Components\Table\SearchsTrait;
@@ -34,16 +35,12 @@ abstract class TableComponent extends Component implements TableContract
         ModelsTrait,
         OperationsTrait,
         OptionsTrait,
+        PerPagesTrait,
         RelationshipsTrait,
         RequestsTrait,
         SearchsTrait,
         SortsTrait,
         WithPagination;
-
-    /**
-     * Default variables.
-     */
-    public int $perPage;
 
     /**
      * Listeners.
@@ -76,7 +73,7 @@ abstract class TableComponent extends Component implements TableContract
         $this->sortDirection = $this->options['columnSortDirection'];
 
         // Table per page
-        $this->perPage = $this->options['perPage'];
+        $this->perPage = session()->get('perPage') ?? $this->options['perPage'];
     }
 
     /**
