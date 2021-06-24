@@ -41,6 +41,11 @@ abstract class TableComponent extends Component implements TableContract
         WithPagination;
 
     /**
+     * Default variables.
+     */
+    public int $perPage;
+
+    /**
      * Listeners.
      *
      * @var array<string>
@@ -69,6 +74,9 @@ abstract class TableComponent extends Component implements TableContract
         // Sorting columns
         $this->sortField = $this->options['columnSortBy'];
         $this->sortDirection = $this->options['columnSortDirection'];
+
+        // Table per page
+        $this->perPage = $this->options['perPage'];
     }
 
     /**
@@ -88,7 +96,7 @@ abstract class TableComponent extends Component implements TableContract
             'columns' => $this->columns(),
             'filters' => $this->filters(),
             'models' => $this->options['paginationShow']
-                ? $this->models()->paginate((int) $this->options['perPage'])
+                ? $this->models()->paginate((int) $this->perPage)
                 : $this->models()->get(),
             'options' => $this->options,
         ]);
