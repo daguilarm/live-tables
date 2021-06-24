@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Daguilarm\LiveTables\Components;
 
+use Daguilarm\LiveTables\Components\Filter\FiltersTrait;
 use Daguilarm\LiveTables\Components\Table\CheckboxesTrait;
 use Daguilarm\LiveTables\Components\Table\DeletesTrait;
 use Daguilarm\LiveTables\Components\Table\ExportsTrait;
-use Daguilarm\LiveTables\Components\Table\FiltersTrait;
 use Daguilarm\LiveTables\Components\Table\ModelsTrait;
 use Daguilarm\LiveTables\Components\Table\OperationsTrait;
 use Daguilarm\LiveTables\Components\Table\OptionsTrait;
