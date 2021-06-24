@@ -5,7 +5,7 @@
         {{-- Include messages --}}
         @includeWhen(
             session()->has('message'),
-            LiveTables::include('components.flash-message')
+            LiveTables::include('components.messages')
         )
 
         {{-- Include the table loading state --}}

@@ -35,4 +35,16 @@ final class Helpers
             ? 'DESC'
             : 'ASC';
     }
+
+    public function alternateTable(object $loop, array $options)
+    {
+        if ($options['rowAlternateBackground']) {
+            if ($loop->even) {
+                return $options['rowBackgroundColor'];
+            }
+            return $options['rowBackgroundColorAlternate'];
+        }
+
+        return $options['rowBackgroundColor'];
+    }
 }

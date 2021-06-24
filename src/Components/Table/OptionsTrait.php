@@ -61,8 +61,6 @@ trait OptionsTrait
             'search' => true,
             'searchReset' => true,
             // Table options
-            'tableAlternateBackground' => false,
-            'tableAlternateBackgroundColor' => 'bg-gray-100',
             'tableRefresh' => false,
             'tableRefreshInSeconds' => 5,
             'tableHeadShow' => true,
@@ -76,6 +74,10 @@ trait OptionsTrait
             // Columns
             'columnSortBy' => 'id',
             'columnSortDirection' => 'ASC',
+            // Rows
+            'rowAlternateBackground' => false,
+            'rowBackgroundColor' => 'bg-white',
+            'rowBackgroundColorAlternate' => 'bg-gray-100',
             // Pagination
             'paginationShow' => true,
             'paginationTheme' => 'tailwind',
