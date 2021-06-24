@@ -30,6 +30,6 @@ final class Action
      */
     private static function defaultView(): string
     {
-        return sprintf('live-tables::%s.sections.actions.default', config('live-tables.theme'));
+        return sprintf('live-tables::%s.actions.default', config('live-tables.theme'));
     }
 }
