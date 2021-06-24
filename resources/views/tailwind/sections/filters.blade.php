@@ -78,7 +78,7 @@
                         </svg>
 
                         <!-- Filter title -->
-                        <span>{{ __('belich-tables::filters.filter') }}</span>
+                        <span>{{ __('live-tables::filters.filter') }}</span>
                     </button>
                 </div>
             </form>

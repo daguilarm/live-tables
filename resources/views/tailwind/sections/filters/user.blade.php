@@ -9,7 +9,7 @@
         </div>
 
         <!-- Filter by user -->
-        <div>{{ __('belich-tables::filters.user') }}</div>
+        <div>{{ __('live-tables::filters.user') }}</div>
     </label>
     <!-- Select -->
     <select
