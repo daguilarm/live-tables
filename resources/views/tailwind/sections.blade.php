@@ -28,22 +28,22 @@
         )
 
         {{-- Add new resource button --}}
-    {{--     @includeWhen(
-            $tableOptions->get('newResource'),
-            LiveTables::include('sections.options.new-resource')
-        ) --}}
+        @includeWhen(
+            $options['actionCreateUrl'],
+            LiveTables::include('sections.new-resource')
+        )
 
         {{-- Add export button --}}
-    {{--     @includeWhen(
-            $checkboxValues && data_get($tableOptions, 'export.selectedTotal') > 0,
-            LiveTables::include('sections.options.export')
-        ) --}}
+        @includeWhen(
+            $options['exportAs'] && $checkboxValues,
+            LiveTables::include('sections.export')
+        )
 
         {{-- Add mass delete button (only if there is checkboxes checked) --}}
-    {{--     @includeWhen(
+        @includeWhen(
             $checkboxValues,
-            LiveTables::include('sections.options.bulk-delete')
-        ) --}}
+            LiveTables::include('sections.bulk-delete')
+        )
     </div>
 
 </div>
