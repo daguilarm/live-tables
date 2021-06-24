@@ -37,7 +37,8 @@ abstract class TableComponent extends Component implements TableContract
         RelationshipsTrait,
         RequestsTrait,
         SearchsTrait,
-        SortsTrait;
+        SortsTrait,
+        WithPagination;
 
     /**
      * Listeners.
