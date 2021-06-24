@@ -1,0 +1,87 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Daguilarm\LiveTables\Components\Filter;
+
+use Daguilarm\LiveTables\Components\FilterComponent;
+use Daguilarm\LiveTables\Facades\LiveTables;
+use Illuminate\Database\Eloquent\Builder;
+
+final class FilterByBoolean extends FilterComponent
+{
+    public string $status_active;
+    public string $status_desactivated;
+
+    /**
+     * Create a new field.
+     */
+    public function __construct(?string $uriKey = null)
+    {
+        parent::__construct($uriKey);
+
+        // Set the view
+        $this->view = LiveTables::include('sections.filters.boolean');
+        // Set the unique key
+        $this->uriKey = $uriKey ?? 'boolean';
+        // Set default values for boolean's fields
+        $this->status_active = trans('belich-tables::filters.status.active');
+        $this->status_desactivated = trans('belich-tables::filters.status.desactivated');
+    }
+
+    /**
+     * Set the filter query.
+     *
+     * @param int | float | string | null $value
+     */
+    public function apply(Builder $model, $value): Builder
+    {
+        $column = $this->getColumn($model);
+        $value = $this->getBooleanValue($value);
+
+        return $model->where($column, $value);
+    }
+
+    /**
+     * Set the filter query.
+     *
+     * @return  array<string>
+     */
+    public function options(): array
+    {
+        return [
+            $this->status_active,
+            $this->status_desactivated,
+        ];
+    }
+
+    /**
+     * Set the $status_active value.
+     */
+    public function trueValue(string $value): self
+    {
+        $this->status_active = $value;
+
+        return $this;
+    }
+
+    /**
+     * Set the $status_desactivated value.
+     */
+    public function falseValue(string $value): self
+    {
+        $this->status_desactivated = $value;
+
+        return $this;
+    }
+
+    /**
+     * Get the boolean value.
+     */
+    private function getBooleanValue(string $value): bool
+    {
+        return $value === 'true'
+            ? true
+            : false;
+    }
+}

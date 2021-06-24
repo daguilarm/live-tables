@@ -3,10 +3,10 @@
     <div class="flex flex-col">
 
         {{-- Include messages --}}
-        {{-- @includeWhen(
+        @includeWhen(
             session()->has('message'),
             LiveTables::include('components.flash-message')
-        ) --}}
+        )
 
         {{-- Include the table loading state --}}
         @if($options['loading'])
@@ -23,13 +23,15 @@
 
         <div class="py-2 align-middle inline-block sm:px-6 lg:px-8">
             <div class="border-b border-gray-200 sm:rounded-lg">
-                {{-- Load all the options: search, filters, perPage, export, new resource... --}}
-                {{-- @include(LiveTables::include('sections.options')) --}}
 
-                <div class="bg-gray-50 text-gray-500 border border-gray-200 rounded-t-lg rounded-b-lg">
+                {{-- Load all the sections: search, filters, perPage, export, new resource... --}}
+                @include(LiveTables::include('sections'))
+
+                <div class="mt-2 bg-gray-50 text-gray-500 border border-gray-200 rounded-t-lg rounded-b-lg">
                     <table
-                        class="table-auto w-full mt-1"
+                        class="table-auto w-full"
                         id="{{ $options['id'] }}"
+
                         {{-- Refresh the table  --}}
                         @if ($options['tableRefresh'])
                             @if ($options['tableRefreshInSeconds'])

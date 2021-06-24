@@ -76,7 +76,7 @@ abstract class TableComponent extends Component implements TableContract
      */
     public function viewName(?string $path = null): string
     {
-        return $path ?? LiveTables::include('table-components');
+        return $path ?? LiveTables::include('table');
     }
 
     /**

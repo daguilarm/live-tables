@@ -34,7 +34,7 @@ trait ModelsTrait
         $column = $this->getColumnByAttribute($this->getSortField());
 
         // Initialize the search
-        // @See Daguilarm\BelichTables\Components\Traits\Models\Search:class
+        // @See Daguilarm\LiveTables\Components\Traits\Models\Search:class
         $search = new Search();
 
         // If the search is enabled, and the search input is not empty, then the search can start.
@@ -54,7 +54,7 @@ trait ModelsTrait
             );
         }
 
-        // Sort by relationship [Daguilarm\BelichTables\Components\Traits\SortingRelatioships]
+        // Sort by relationship [Daguilarm\LiveTables\Components\RelationshipSortTrait]
         if ($column->hasRealationship()) {
             [$builder, $sortAttribute] = $this->sortingByRelationship($builder, $column);
         }
