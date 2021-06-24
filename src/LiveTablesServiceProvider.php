@@ -7,6 +7,7 @@ namespace Daguilarm\LiveTables;
 use Daguilarm\LiveTables\Facades\LiveTables;
 use Daguilarm\LiveTables\Facades\LiveTablesProvider;
 use Illuminate\Foundation\AliasLoader;
+use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 use Livewire\Livewire;
 
@@ -22,6 +23,9 @@ final class LiveTablesServiceProvider extends ServiceProvider
     {
         // Publish and configure resources and config
         $this->publishAndConfigure();
+
+        // Blade directives
+        $this->bladeDirectives();
     }
 
     /**
@@ -63,5 +67,19 @@ final class LiveTablesServiceProvider extends ServiceProvider
                 __DIR__.'/../resources/lang' => resource_path('lang/vendor/live-tables'),
             ], 'lang');
         }
+    }
+
+    /**
+     * Generate the Blade directives.
+     */
+    public function bladeDirectives()
+    {
+        // Blade directives
+        Blade::directive('liveTablesCss', static function ($expression) {
+            $css = file_get_contents(__DIR__.'/../resources/css/live-tables.min.css');
+            $customCss = str_replace('@backGroundColor', config('live-tables.loadingColor'), $css);
+
+            return sprintf('<style>%s</style>', trim($customCss));
+        });
     }
 }
