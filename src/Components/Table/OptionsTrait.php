@@ -74,13 +74,13 @@ trait OptionsTrait
             // Columns
             'columnSortBy' => 'id',
             'columnSortDirection' => 'ASC',
+            'columnHighlight' => 'bg-yellow-50 border-r border-l border-yellow-100',
             // Rows
             'rowAlternateBackground' => true,
             'rowBackgroundColor' => 'bg-white',
             'rowBackgroundColorAlternate' => 'bg-gray-50',
             // Pagination
             'paginationShow' => true,
-            'paginationTheme' => 'tailwind',
         ];
     }
 }

@@ -16,6 +16,7 @@ abstract class FilterComponent extends Component implements FilterContract
     public string $tableColumn;
     public int | float | string $value;
     public string $view;
+    public string $highlight;
 
     /**
      * Init constructor.
@@ -59,6 +60,13 @@ abstract class FilterComponent extends Component implements FilterContract
     public function view(string $value): self
     {
         $this->class = $value;
+
+        return $this;
+    }
+
+    public function highlight(string $value)
+    {
+        $this->highlight = $value;
 
         return $this;
     }

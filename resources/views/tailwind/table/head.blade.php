@@ -26,7 +26,7 @@
                 @if($column->isSortable())
                     <th
                         scope="col"
-                        class="{{ $column->getVisibility() }} px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer"
+                        class="{{ $column->getVisibility() }} {{ LiveTables::columnHighlight($column->getAttribute(), $filterColumns, $options) }} px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer"
                         id="column_{{ $column->getName() }}"
                         dusk="column-{{ $column->getName() }}"
                         wire:click="orderBy('{{ $column->getAttribute() }}', '{{ LiveTables::toogleDirection(field: $sortField, currentField: $column->getAttribute(), direction: $sortDirection) }}')"

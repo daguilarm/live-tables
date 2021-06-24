@@ -18,7 +18,7 @@
         {{-- Get the table rows --}}
         @foreach($models as $model)
             <tr
-                class="{{ LiveTables::alternateTable($loop, $options) }} border-b border-gray-150"
+                class="{{ LiveTables::rowBackgroundColor($loop, $options) }} border-b border-gray-150"
                 id="row_id_{{ $model->id }}"
                 dusk="row-id-{{ $model->id }}"
             >
@@ -39,7 +39,7 @@
                 @foreach($columns as $column)
                     @if ($column->isVisible())
                         <td
-                            class="{{ $column->getVisibility() }} px-6 py-3 text-sm text-gray-500"
+                            class="{{ $column->getVisibility() }} {{ LiveTables::columnHighlight($column->getAttribute(), $filterColumns, $options) }} px-6 py-3 text-sm text-gray-500"
                             dusk="column-{{ $column->getAttribute() }}-{{ $model->id }}"
                         >
                             {{-- Render column as Boolean --}}

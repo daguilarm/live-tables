@@ -36,7 +36,12 @@ final class Helpers
             : 'ASC';
     }
 
-    public function alternateTable(object $loop, array $options)
+    /**
+     * Table background colors, including: zebra striped table.
+     *
+     * @param array<string> $options
+     */
+    public function rowBackgroundColor(object $loop, array $options): string
     {
         if ($options['rowAlternateBackground']) {
             if ($loop->odd) {
@@ -46,5 +51,20 @@ final class Helpers
         }
 
         return $options['rowBackgroundColor'];
+    }
+
+    /**
+     * Table background colors, including: zebra striped table.
+     *
+     * @param array<string> $highlight
+     * @param array<string> $options
+     *
+     * @return string | void
+     */
+    public function columnHighlight(string $column, array $highlight, array $options)
+    {
+        if (in_array($column, $highlight)) {
+            return $options['columnHighlight'];
+        }
     }
 }

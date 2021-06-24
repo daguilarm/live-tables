@@ -16,6 +16,13 @@ trait FiltersTrait
     public array $filterValues = [];
 
     /**
+     * Filter columns.
+     *
+     * @var array<string>
+     */
+    public array $filterColumns = [];
+
+    /**
      * Resolve filters.
      * The magic will happend in \Daguilarm\BelichTables\Traits\Model::models().
      */
@@ -31,6 +38,9 @@ trait FiltersTrait
                 if ($value) {
                     // Execute the filter from each table component defined by the user
                     $filter->apply($this->sqlBuilder, $value);
+
+                    // Highlight the filtered column
+                    array_push($this->filterColumns, $filter->highlight);
                 }
             });
     }
@@ -41,6 +51,7 @@ trait FiltersTrait
     public function resetAllFilters(): void
     {
         $this->filterValues = [];
+        $this->filterColumns = [];
         $this->search = '';
     }
 
