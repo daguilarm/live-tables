@@ -56,14 +56,18 @@ abstract class TableComponent extends Component implements TableContract
         // Set the live table options
         $this->options = $this->mergeOptions();
 
-        // // Init the column's filter
+        // Init the column's filter
         $this->sqlBuilder = $this->query();
 
-        // // Init the model
+        // Init the model
         $this->model = $this->getModel();
 
-        // // Get table name
+        // Get table name
         $this->tableName = $this->model->getTable();
+
+        // Sorting columns
+        $this->sortField = $this->options['columnSortBy'];
+        $this->sortDirection = $this->options['columnSortDirection'];
     }
 
     /**

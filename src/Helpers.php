@@ -22,14 +22,17 @@ final class Helpers
     }
 
     /**
-     * Set column order.
-     *
-     * @param array<string> $options
+     * Toogle column order.
      */
-    public function orderBy(Column $column, array $options): string
+    public function toogleDirection(string $currentField, string $field, string $direction): string
     {
-        return $column->getAttribute() !== $options['columnSortBy']
-            ? 'reorder'
-            : $options['columnSortDirection'];
+        // When a column is changed we want to reset the order.
+        if($currentField !== $field) {
+            return 'ASC';
+        }
+
+        return $direction === 'ASC'
+            ? 'DESC'
+            : 'ASC';
     }
 }

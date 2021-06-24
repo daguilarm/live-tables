@@ -4,15 +4,20 @@ declare(strict_types=1);
 
 namespace Daguilarm\LiveTables\Components\Table;
 
+use Daguilarm\LiveTables\Facades\LiveTables;
+
 trait SortsTrait
 {
+    public string $sortField;
+    public string $sortDirection;
+
     /**
      * Sorting columns.
      */
     public function orderBy(string $attribute, string $direction): void
     {
         $this->sortField = $attribute;
-        $this->sortDirection = $this->toogleDirection($direction);
+        $this->sortDirection = $direction;
     }
 
     /**
@@ -20,7 +25,7 @@ trait SortsTrait
      */
     public function getSortField(): string
     {
-        return $this->options['columnSortBy'];
+        return $this->sortField ?? $this->options['columnSortBy'];
     }
 
     /**
@@ -28,20 +33,6 @@ trait SortsTrait
      */
     public function getSortDirection(): string
     {
-        return $this->options['columnSortDirection'];
-    }
-
-    /**
-     * Update order.
-     */
-    private function toogleDirection(string $direction): string
-    {
-        if ($direction === 'reorder') {
-            return 'asc';
-        }
-
-        return $direction === 'asc'
-            ? 'desc'
-            : 'asc';
+        return $this->sortDirection ?? $this->options['columnSortDirection'];
     }
 }
