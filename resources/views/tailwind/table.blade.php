@@ -62,7 +62,7 @@
 
                     {{-- Include the pagination --}}
                     @if($options['paginationShow'])
-                        {{ $models->links(LiveTables::include('table.pagination')) }}
+                        {{ $results->links(LiveTables::include('table.pagination')) }}
                     @endif
                 </div>
             </div>

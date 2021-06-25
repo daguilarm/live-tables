@@ -6,7 +6,6 @@ namespace Daguilarm\LiveTables\Components;
 
 use Daguilarm\LiveTables\Components\Filter\FiltersTrait;
 use Daguilarm\LiveTables\Components\Table\CheckboxesTrait;
-use Daguilarm\LiveTables\Components\Table\DeletesTrait;
 use Daguilarm\LiveTables\Components\Table\ExportsTrait;
 use Daguilarm\LiveTables\Components\Table\ModelsTrait;
 use Daguilarm\LiveTables\Components\Table\OperationsTrait;
@@ -29,7 +28,6 @@ use Livewire\WithPagination;
 abstract class TableComponent extends Component implements TableContract
 {
     use CheckboxesTrait,
-        DeletesTrait,
         ExportsTrait,
         FiltersTrait,
         ModelsTrait,
@@ -47,7 +45,7 @@ abstract class TableComponent extends Component implements TableContract
      *
      * @var array<string>
      */
-    protected $listeners = ['itemDelete', 'fileDownloadNotification'];
+    protected $listeners = ['fileDownloadNotification'];
 
     /**
      * TableComponent constructor.
@@ -92,10 +90,11 @@ abstract class TableComponent extends Component implements TableContract
         return view($this->viewName(), [
             'columns' => $this->columns(),
             'filters' => $this->filters(),
-            'models' => $this->options['paginationShow']
+            'model' => $this->model,
+            'options' => $this->options,
+            'results' => $this->options['paginationShow']
                 ? $this->models()->paginate((int) $this->perPage)
                 : $this->models()->get(),
-            'options' => $this->options,
         ]);
     }
 

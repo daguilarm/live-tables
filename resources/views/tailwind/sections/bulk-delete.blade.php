@@ -2,9 +2,9 @@
 <div
     id="delete_mass_button"
     dusk="delete-mass-button"
-    x-data="{ 'showModal': false }"
-    @keydown.escape="showModal = false"
     class="hidden md:block"
+    {{-- x-data="{ 'showModal': false }" --}}
+    {{-- @keydown.escape="showModal = false" --}}
 >
     <!-- Button -->
     <button
@@ -20,6 +20,6 @@
         </svg>
     </button>
 
-    <!-- Delete Modal -->
-    @include(LiveTables::include('dialogs.delete-elements'), ['onclick' => 'bulkDelete'])
+    {{-- Insert your delete dialog --}}
+    {{-- ... --}}
 </div>

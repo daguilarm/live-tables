@@ -29,7 +29,7 @@
 
         {{-- Add new resource button --}}
         @includeWhen(
-            $options['actionCreateUrl'],
+            auth()->user()->can('create', $model) && $options['actionCreateUrl'],
             LiveTables::include('sections.new-resource')
         )
 
@@ -41,7 +41,7 @@
 
         {{-- Add mass delete button (only if there is checkboxes checked) --}}
         @includeWhen(
-            $checkboxValues,
+            auth()->user()->can('delete', $model) && $checkboxValues,
             LiveTables::include('sections.bulk-delete')
         )
     </div>

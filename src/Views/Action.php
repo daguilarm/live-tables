@@ -19,8 +19,7 @@ final class Action
                 $component = $view ?? self::defaultView();
 
                 return view($component)
-                    ->withId($model->id)
-                    ->withResource($model->getTable());
+                    ->withModel($model);
             })
             ->excludeFromExport();
     }
