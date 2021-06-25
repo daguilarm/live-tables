@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Daguilarm\LiveTables;
 
+use Daguilarm\LiveTables\Components\DeleteComponent;
 use Daguilarm\LiveTables\Facades\LiveTables;
 use Daguilarm\LiveTables\Facades\LiveTablesProvider;
 use Illuminate\Foundation\AliasLoader;
@@ -26,6 +27,9 @@ final class LiveTablesServiceProvider extends ServiceProvider
 
         // Blade directives
         $this->bladeDirectives();
+
+        // Livewire Components
+        Livewire::component('delete-button-component', DeleteComponent::class);
     }
 
     /**

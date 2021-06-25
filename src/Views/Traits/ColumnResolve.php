@@ -48,7 +48,13 @@ trait ColumnResolve
         $value = data_get($model, $column->getAttribute());
 
         // Resolve type for value
-        $value = $this->resolveType($value);
+        if ($value) {
+            $value = $this->resolveType($value);
+
+        // No results
+        } else {
+            $value = config('live-tables.noResults');
+        }
 
         // Resolving the column as a view
         if ($column->isRenderable()) {
@@ -60,6 +66,6 @@ trait ColumnResolve
             return $column->formatted($value);
         }
 
-        return $value ?? BelichTables::noResults();
+        return $value;
     }
 }

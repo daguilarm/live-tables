@@ -17,5 +17,5 @@
     </a>
 
     {{-- Delete Dialog --}}
-    @include(BelichTables::include('dialogs.delete-elements'), ['onclick' => 'itemDelete('.$userId.')'])
+    @include(LiveTables::include('dialogs.delete-elements'), ['onclick' => 'itemDelete('.$userId.')'])
 </div>
