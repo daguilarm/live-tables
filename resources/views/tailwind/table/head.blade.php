@@ -61,7 +61,7 @@
                 @else
                     <th
                         scope="col"
-                        class="{{ $column->getVisibility() }} px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                        class="{{ $column->getVisibility() }} {{ LiveTables::columnHighlight($column->getAttribute(), $filterColumns, $options) }} px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                         id="column-{{ $column->getName() }}"
                         dusk="column_{{ $column->getName() }}"
                     >
