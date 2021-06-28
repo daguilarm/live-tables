@@ -1,11 +1,11 @@
 # Export
 
-**Belich Tables** allows us to download in various formats ([Attributes](en/basics/attributes.md)), the selected content from the table. After selecting the file format, it will be download to your HDD.
+**Live Tables** allows us to download in various formats ([Attributes](en/basics/attributes.md)), the selected content from the table. After selecting the file format, it will be download to your HDD.
 
-![Belich Tables with Livewire](../../_media/export.png ':class=thumbnail')
+![Live Tables with Livewire](../../_media/export.png ':class=thumbnail')
 
 
-Below you can see the content of the file `views/vendor/belich-tables.tailwind.includes.options.export.blade.php`.
+Below you can see the content of the file `views/vendor/live-tables.tailwind.sections.export.blade.php`.
 
 ```html
 {{-- If is inside a tab container (historical) not showing... --}}

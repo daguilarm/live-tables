@@ -10,8 +10,8 @@ To create a table component you may draw inspiration from the below stub:
 namespace App\Http\Livewire;
 
 use App\User;
-use Daguilarm\BelichTables\Components\TableComponent;
-use Daguilarm\BelichTables\Views\Column;
+use Daguilarm\LiveTables\Components\TableComponent;
+use Daguilarm\LiveTables\Views\Column;
 use Illuminate\Database\Eloquent\Builder;
 
 class UsersTable extends TableComponent
@@ -80,4 +80,4 @@ Column::make('Avatar', 'profile.profile_avatar')
 
 And this is the result:
 
-![Belich Tables with Livewire](../../_media/belich-tables.png ':class=thumbnail')
+![Live Tables with Livewire](../../_media/belich-tables.png ':class=thumbnail')

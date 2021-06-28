@@ -3,23 +3,17 @@
 You can install the package via composer:
 
 ```bash
-composer require daguilarm/belich-tables
-```
-
-Or include in your `composer.json`:
-
-```bash
-"daguilarm/belich-tables": "^1.2"
+composer require daguilarm/live-tables
 ```
 
 or if you want to test...
 
 ```bash
-"daguilarm/belich-tables": "@dev"
+"daguilarm/live-tables": "@dev"
 ```
 
 Publishing assets is mandatory for this package:
 
 ```bash
-php artisan vendor:publish --provider="Daguilarm\BelichTables\BelichTablesServiceProvider"
+php artisan vendor:publish --provider="Daguilarm\LiveTables\LiveTablesServiceProvider"
 ```

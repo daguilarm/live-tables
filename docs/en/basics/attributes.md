@@ -2,61 +2,91 @@
 
 The attributes that you can use in a **Table Component** are described below. These attributes have been classified by groups, in order to facilitate their management.
 
-**All the attributes have protected properties**.
+This attributes will let you customize your **Live Table** as you need. You can customize the attributes from the components, using the `$option` variable:
+
+```php 
+<?php
+
+namespace App\Http\Livewire;
+
+use App\Models\Question;
+use Daguilarm\LiveTables\Components\TableComponent;
+use Daguilarm\LiveTables\Views\Action;
+use Daguilarm\LiveTables\Views\Column;
+use Illuminate\Database\Eloquent\Builder;
+use Str;
+
+class QuestionsTable extends TableComponent
+{
+    public array $options = [
+        'id' => 'myID',
+        'loading' => true,
+        'checkBoxesShow' => true,
+        'perPage' => 25,
+        'perPageOptions' => [10, 25, 50, 100, 300, 500],
+        'perPageShow' => true,
+    ];
+}
+```
 
 ## Export attributes
 
-| Attribute | Default | Example | Description |
+| Attribute | Default | Description |
 | :---------- |:------------ |:------------| :-----------| 
-| $export | [] | `protected array $export = ['pdf', 'csv', 'xls']`| Defines the file formats that are allowed to be downloaded. If you leave it in blank, the export option will be canceled. |
-| $exportAllowedFormats | csv, xls, xlsx, pdf | `protected array $exportAllowedFormats = ['csv', 'pdf']`| Defines the file formats supported when exporting. |
-| $exportFileName | data | `protected string $exportFileName = 'data'`| Defines the file name for the exported file. |
+| exportOptions | [] | Defines the file formats that are allowed to be downloaded. If you leave it in blank, the export option will be canceled. |
+| exportFileName | export-data | Defines the file name for the exported file. |
 
 ## Table attributes
 
-| Attribute | Default | Example | Description |
+| Attribute | Default | Description |
 | :---------- |:------------ |:------------| :-----------| 
-| $refresh | false | `protected bool $refresh = false`| Defines if the table will be refreshing at a certain interval of time. |
-| $refreshInSeconds | 2 seconds | `protected int $refreshInSeconds`| Defines the interval of time, in seconds. |
-| $showCheckboxes | true | `protected bool $showCheckboxes = true`| Show or hide the checkboxes fields in the table. |
-| $showOffline | true | `protected bool $showOffline = true`| Show or hide the offline message when there is no internet connection. |
-| $showLoading | true | `protected bool $showLoading = true`| Show or hide the loading indicador after each change. |
-| $showTableHead | true | `protected bool $showTableHead = true`| Show or hide the table head. |
-| $showTableFooter | false | `protected bool $showTableFooter = false`| Show or hide the table footer. |
+| id | random | Defines the table ID value. |
+| tableRefresh | false | Defines if the table will be refreshing at a certain interval of time. |
+| tableRefreshInSeconds | 5 seconds | Defines the interval of time, in seconds, for table refresh. |
+| checkBoxesShow | true | Show or hide the checkboxes fields in the table. |
+| loading | true | Show or hide the loading indicador after each change. |
+| tableHeadShow | true | Show or hide the table head. |
+| tableFooterShow | false | Show or hide the table footer. |
 
 ## Pagination attributes
 
-| Attribute | Default | Example | Description |
+| Attribute | Default | Description |
 | :---------- |:------------ |:------------| :-----------| 
-| $showPagination | true | `protected bool $showPagination = true`| show or hide the pagination. |
-| $paginationTheme | tailwind | `protected string $paginationTheme = 'talwind'`| Defines The pagination theme used by Laravel. By default will use the selection from the config file. |
+| perPageShow | true | show or hide the pagination. |
 
 ## Per page attributes
 
-| Attribute | Default | Example | Description |
+| Attribute | Default | Description |
 | :---------- |:------------ |:------------| :-----------| 
-| $showPerPage | true | `protected bool $showPerPage = true`| Show the selector with the per page options. |
-| $perPageOptions | 10, 25, 50, 100 | `protected array $perPageOptions = [10, 25, 50, 100]` | Define the interval of values for the attribute. |
-| $perPage | 25 | `protected int $perPage = 25`| Set the current value for the attribute. |
+| perPageShow | true | Show the selector with the per page options. |
+| perPageOptions | 10, 25, 50, 100 | Define the interval of values for the attribute. |
+| perPage | 25 | Set the current value for the attribute. |
 
 ## Search attributes
 
-| Attribute | Default | Example | Description |
+| Attribute | Default | Description |
 | :---------- |:------------ |:------------| :-----------| 
-| $showSearch | true | `protected bool $showSearch = true`| Show or hide the search box. |
-| $searchUpdateMethod | debounce | `protected string $searchUpdateMethod = 'debounce'`| Select the search update method between: `debounce` or `lazy`. |
-| $searchDebounce | 350 ms | `protected int $searchDebounce = 350` | Amount of time in ms to wait to send the search query and refresh the table. |
-| $clearSearchButton | true | `protected bool $clearSearchButton = true`| Show or hide a button to clear the search box. |
+| search | true | Show or hide the search box. |
+| searchReset | true | Show or hide a button to clear the search box. |
 
-## Sort attributes
+## Column attributes
 
-| Attribute | Default | Example | Description |
+| Attribute | Default | Description |
 | :---------- |:------------ |:------------| :-----------| 
-| $sortField | id | `protected string $sortField = 'id'`| The default sort field for the table. |
-| $sortDirection | asc | `protected string $sortDirection = 'asc'`| The default sort direction for the table. |
+| columnSortBy | id | The default sort field for the table. |
+| columnSortDirection | asc | The default sort direction for the table. |
+| columnHighlight | bg-yellow-50 border-r border-l border-yellow-100 | Highlight a column that has been filtered. It is just a method to know what filters have been applied.|
+
+## Row attributes
+
+| Attribute | Default | Description |
+| :---------- |:------------ |:------------| :-----------| 
+| rowAlternateBackground | true | Add zebra striping to the table (striped rows). |
+| rowBackgroundColor | bg-white | Default background color or odd color when applied. |
+| rowBackgroundColorAlternate | bg-gray-50 | Even color when applied.|
 
 ## Other attributes
 
-| Attribute | Default | Example | Description |
+| Attribute | Default | Description |
 | :---------- |:------------ |:------------| :-----------| 
-| $newResource | disabled | `protected string $newResource = '../../dashboard/users/create'`| Set the url path for create a new resource. |
+| actionCreateUrl | disabled | Set the url path for create a new resource. For example: `../../dashboard/users/create` |

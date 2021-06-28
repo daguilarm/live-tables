@@ -1,28 +1,37 @@
 # Introduction
 
-**Belich tables** allows you to adding custom sections that are activated when there are *checkboxes* selected in the table. By default, the *package* includes two pre-configured and fully operational sections:
+**Live tables** allows you to adding custom sections that are activated when there are *checkboxes* selected in the table. By default, the *package* includes two pre-configured and fully operational sections:
 
 - [Bulk delete](en/sections/bulk-delete.md).
 - [Export data to file](en/sections/export.md).
 
 The package inject into the **Blade** file the variable `$checkboxValues`, which is a boolean that can return `TRUE` or `FALSE` based on whether or not items are selected.
 
-The **Blade** file that manages the different options that can be added, is located in: `views/vendor/belich-tables/tailwind/includes/options.blade.php`.
+The **Blade** file that manages the different options that can be added, is located in: `views/vendor/live-tables/tailwind/sections.blade.php`.
 In this file, we will find the code that includes the two default sections that the *package* includes:
 
 ```html 
 <!-- Add export button -->
-@includeWhen($checkboxValues && count($exports) > 0, BelichTables::include('includes.options.export'))
+@includeWhen(
+    $options['exportAs'] && $checkboxValues,
+    LiveTables::include('sections.export')
+)
 
 <!-- Add mass delete button (only if there is checkboxes checked) -->
-@includeWhen($checkboxValues, BelichTables::include('includes.options.bulk-delete'))
+@includeWhen(
+    auth()->user()->can('delete', $model) && $checkboxValues,
+    LiveTables::include('sections.bulk-delete')
+)
 ```
 
 Now you just have to create your custom **Blade** file with all the necessary logic to create the section you need. Below is an example of how a section could be integrated:
 
 ```html 
 <!-- Add new section -->
-@includeWhen($checkboxValues, BelichTables::include('includes.options.new-section'))
+@includeWhen(
+    auth()->user()->can('create', $model) && $options['actionCreateUrl'],
+    LiveTables::include('sections.new-resource')
+)
 ```
 
 And the **Blade** view:

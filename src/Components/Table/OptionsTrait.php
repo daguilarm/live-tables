@@ -53,6 +53,7 @@ trait OptionsTrait
             // Get the allowed formats and the selected one
             'exportOptions' => $this->exportAllowedFormats,
             'exportAs' => [],
+            'exportFileName' => 'export-data',
             // Per page configuration
             'perPage' => 25,
             'perPageOptions' => [10, 25, 50, 100, 300, 500],
@@ -66,11 +67,7 @@ trait OptionsTrait
             'tableHeadShow' => true,
             'tableFooterShow' => false,
             // Actions
-            'actionCreate' => false,
             'actionCreateUrl' => '',
-            'actionShow' => true,
-            'actionUpdate' => true,
-            'actionDelete' => false,
             // Columns
             'columnSortBy' => 'id',
             'columnSortDirection' => 'ASC',

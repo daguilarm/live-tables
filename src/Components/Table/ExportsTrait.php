@@ -16,8 +16,6 @@ trait ExportsTrait
 {
     use Notification, PdfLibrary;
 
-    protected string $exportFileName = 'data';
-
     /**
      * @var array<string>
      */
@@ -73,7 +71,7 @@ trait ExportsTrait
         );
 
         // File name
-        $fileName = sprintf('%s.%s', $this->exportFileName, $type);
+        $fileName = sprintf('%s.%s', $this->options['exportFileName'], $type);
 
         return $downloadClass->download($fileName, $exportFormat);
     }

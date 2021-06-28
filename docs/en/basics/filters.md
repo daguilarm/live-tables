@@ -13,11 +13,11 @@ Let's see a complete example of what a Filter Component would look like:
 
 declare(strict_types=1);
 
-namespace Daguilarm\BelichTables\Components\Filters;
+namespace Daguilarm\LiveTables\Components\Filters;
 
 use App\Models\User;
-use Daguilarm\BelichTables\Components\FilterComponent;
-use Daguilarm\BelichTables\Facades\BelichTables;
+use Daguilarm\LiveTables\Components\FilterComponent;
+use Daguilarm\LiveTables\Facades\LiveTables;
 use Illuminate\Database\Eloquent\Builder;
 
 final class FilterByUser extends FilterComponent
@@ -29,7 +29,7 @@ final class FilterByUser extends FilterComponent
     {
         parent::__construct($uriKey);
 
-        $this->view = 'belich-tables.resources.options.filters.user';
+        $this->view = 'live-tables.resources.filters.user';
         $this->uriKey = 'user';
         $this->tableColumn = 'id';
     }
@@ -69,7 +69,7 @@ Each filter must comply with an interface:
 
 declare(strict_types=1);
 
-namespace Daguilarm\BelichTables\Contracts;
+namespace Daguilarm\LiveTables\Contracts;
 
 use Illuminate\Database\Eloquent\Builder;
 
@@ -100,9 +100,9 @@ In the constructor we will have to define several attributes:
 
 | Attribute | Example | Description |
 | :---------- |:------------| :------------|
-| $view | `$this->view ='path.to.the.filter.view'` | Defines the location where the view is located. |
-| $uriKey | `$this->uriKey = 'user'` | Define the filter unique name. This field is inspired in Laravel Nova documentation. |
-| $tableColumn | `$this->tableColumn = 'id'` | Defines the field in the table on which the filter action will be performed. It is important not to add the name of the table to the name of the column, for example: `users.id`, since this operation is already done by the`getColumn($model)` method automatically (as it will look later). |
+| $view | `$this->view ='path.to.the.filter.view'` | Defines the location where the view is located. |
+| $uriKey | `$this->uriKey = 'user'` | Define the filter unique name. This field is inspired in Laravel Nova documentation. |
+| $tableColumn | `$this->tableColumn = 'id'` | Defines the field in the table on which the filter action will be performed. It is important not to add the name of the table to the name of the column, for example: `users.id`, since this operation is already done by the`getColumn($model)` method automatically (as it will look later). |
 
 In the example above, the constructor part would look like this:
 
@@ -144,7 +144,7 @@ The `getColumn ()` method is available as a helper when we want to use the name 
 
 | Method | Example | Description |
 | :---------- |:------------| :------------|
-| getColumn() | `$this->getColumn($model)` | It is used to call the database column automatically and in a homogenized way. **It is recommended to use this method instead of the column name.** |
+| getColumn() | `$this->getColumn($model)` | It is used to call the database column automatically and in a homogenized way. **It is recommended to use this method instead of the column name.** |
 
 ?> It is important to use the method `getColumn()`, since it will allow us to homogenize the code and thus avoid problems with the database when we use related tables.
 
@@ -236,10 +236,10 @@ wire:model.defer="filterValues.filterName"
 
 | Filter | Class | Description |
 | :---------- |:------------| :------------|
-| FilterByBoolean | `FilterByBoolean:class` | It is used to filter [boolean columns](https://daguilarm.github.io/belich-tables/#/en/basics/columns?id=showasboolean), very useful for `active` or `not active` fields. |
-| FilterByDate | `FilterByDate:class` | It is used to filter between two dates or between only one, in the selected column. |
-| FilterByUser| `FilterByUser:class` | It is used to filter the users in the database. |
-| FilterByYear| `FilterByYear:class` | It is used to filter the results base on the year. |
+| FilterByBoolean | `FilterByBoolean:class` | It is used to filter [boolean columns](https://daguilarm.github.io/belich-tables/#/en/basics/columns?id=showasboolean), very useful for `active` or `not active` fields. |
+| FilterByDate | `FilterByDate:class` | It is used to filter between two dates or between only one, in the selected column. |
+| FilterByUser| `FilterByUser:class` | It is used to filter the users in the database. |
+| FilterByYear| `FilterByYear:class` | It is used to filter the results base on the year. |
 
 An example of the default filters in action:
 
@@ -266,8 +266,9 @@ To customize the default filters, or our own custom filters, we have at our disp
 
 | Filter | Example | Description |
 | :---------- |:------------| :------------|
-| tableColumn() | `FilterByYear::make()->tableColumn('created_at')` | With this method, we can determine on which column of the table the filter will do its *magic*. |
-| view() | `FilterByYear::make()->view('path.to.my.view')` | This method allows us to directly define our custom view. For example, in case we want to change the view in the predefined filters. |
+| tableColumn() | `FilterByYear::make()->tableColumn('created_at')` | With this method, we can determine on which column of the table the filter will do its *magic*. |
+| view() | `FilterByYear::make()->view('path.to.my.view')` | This method allows us to directly define our custom view. For example, in case we want to change the view in the predefined filters. |
+| highlight('column') | `FilterByYear::make()->highlight('created_at')` | Will highlight the column 'created_at' when filter. |
 
 To create your own filters, you will only have to create the two necessary files: the **component** and the **view**.
 
@@ -279,7 +280,7 @@ This filters have a extra feature. You can instruct **Belich Tables** to use a c
 public function filters(): array
 {
     return [
-        FilterByBoolean ::make()
+        FilterByBoolean ::make()
             ->trueValue('Male')
             ->falseValue('Female'),
     ];

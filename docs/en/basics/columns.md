@@ -1,6 +1,6 @@
 # Columns
 
-Let's take a cloused look at the methods available for `\Daguilarm\BelichTables\Views\Column::class`. 
+Let's take a cloused look at the methods available for `\Daguilarm\LiveTables\Views\Column::class`. 
 
 ## General methods 
 
@@ -8,10 +8,10 @@ Let's start with the general methods:
 
 | Method | Example | Description |
 | :---------- |:------------| :-----------| 
-|asHtml() | `Column::make('email')->asHtml()` | It allows us to show the result as if it were pure html, that is, the code without escaping. This method is often associated with `format()`. |
+|asHtml() | `Column::make('email')->asHtml()` | It allows us to show the result as if it were pure html, that is, the code without escaping. This method is often associated with `format()`. |
 | notAsHtml() | `Column::make('email')->notAsHtml()` | This method is the opposite of `asHtml()` and what it does is re-escape the code. |
 | format() | `format(static function($value) {return $value;})` | It allows us to format the data output. This includes the use of `HTML` elements. In these cases you must also add the method `asHtml()`. |
-| searchable() | `Column::make('ID')->searchable()` | This method will allow our column to be included in the search results from the **Belich Tables**. |
+| searchable() | `Column::make('ID')->searchable()` | This method will allow our column to be included in the search results from the **Live Tables**. |
 | sortable() | `Column::make('ID')->sortable()` | This method will allow us to sort the results of each column in ascending or descending order. | 
 
 ## Visibility
@@ -20,8 +20,8 @@ There are also methods to show and hide content:
 
 | Method | Example | Description |
 | :---------- |:------------| :-----------| 
-| hide() | `Column::make('email')->hide()` | The method hides the entire column. |
-| hideIf() | `Column::make('email')->hideIf(auth()->user()->role !== 'admin')` | It allows us to hide content based on a condition. The method hide the column if the condition is met. |
+| hide() | `Column::make('email')->hide()` | The method hides the entire column. |
+| hideIf() | `Column::make('email')->hideIf(auth()->user()->role !== 'admin')` | It allows us to hide content based on a condition. The method hide the column if the condition is met. |
 
 ## Screen size
 
@@ -29,8 +29,8 @@ We can also hide or show content depending on the screen size:
 
 | Method | Example | Description |
 | :---------- |:------------| :-----------| 
-| hideFrom() | `Column::make('email')->hideFrom('xl')` | We can hide the column depending on the size of the screen. For this, the size system used by TailwindCSS has been used. In this specific case, it will add to the `class` attribute, the classes: `block xl:hidden`. |
-| showOn() | `Column::make('email')->showOn('md')` | It works in the opposite way to the previous one. In this specific case, it will add to the `class` attribute, the classes: `hidden md:block`. |
+| hideFrom() | `Column::make('email')->hideFrom('xl')` | We can hide the column depending on the size of the screen. For this, the size system used by TailwindCSS has been used. In this specific case, it will add to the `class` attribute, the classes: `block xl:hidden`. |
+| showOn() | `Column::make('email')->showOn('md')` | It works in the opposite way to the previous one. In this specific case, it will add to the `class` attribute, the classes: `hidden md:block`. |
 
 ?> The available options are: `sm`, `md`, `lg` and `xl`.
 
@@ -40,25 +40,25 @@ We can show the value as boolean:
 
 | Method | Example | Description |
 | :---------- |:------------| :-----------| 
-| showAsBoolean() | `Column::make('email')->showAsBoolean()` | The field needs to be boolean (true or false), or it won't work properly. |
+| showAsBoolean() | `Column::make('email')->showAsBoolean()` | The field needs to be boolean (true or false), or it won't work properly. |
 
 In the following image, you can see an example of how it would look:
 
-![Belich Tables with Livewire](../../_media/boolean.png ':class=thumbnail')
+![Live Tables with Livewire](../../_media/boolean.png ':class=thumbnail')
 
 !> It is recommended to define inside the model that the field is boolean (using the `cast` attribute). In any case, the system will automatically assign the field as boolean, trying to avoid the problem. For this, will use the `asBoolean()` method internally.
 
 ## Type hint
 
-As mentioned above, **Belich Tables** has a series of methods that will allow us to assign types to the returned value.
+As mentioned above, **Live Tables** has a series of methods that will allow us to assign types to the returned value.
 
 | Method | Example | Description |
 | :---------- |:------------| :-----------| 
-|toBoolean() | `Column::make('active')->toBoolean()` | Returns the value as a boolean. |
-|toFloat() | `Column::make('price')->toFloat()` | Returns the value as a float. |
-|toInteger() | `Column::make('id')->toInteger()` | Returns the value as a integer. |
-|toObject() | `Column::make('address')->format(...)->toObject()` | Returns the value as a object. In some specific cases it can be useful. |
-|toString() | `Column::make('id')->toString()` | Returns the value as a string. |
+|toBoolean() | `Column::make('active')->toBoolean()` | Returns the value as a boolean. |
+|toFloat() | `Column::make('price')->toFloat()` | Returns the value as a float. |
+|toInteger() | `Column::make('id')->toInteger()` | Returns the value as a integer. |
+|toObject() | `Column::make('address')->format(...)->toObject()` | Returns the value as a object. In some specific cases it can be useful. |
+|toString() | `Column::make('id')->toString()` | Returns the value as a string. |
 
 ## render()
 
@@ -66,7 +66,7 @@ And finally, we leave the method that will allow us to add custom views to the c
 
 | Method | Example | Description |
 | :---------- |:------------| :-----------| 
-| render() | `Column::render(static function(object $model) {...})` | This method allows us to include a view directly in the column. |
+| render() | `Column::render(static function(object $model) {...})` | This method allows us to include a view directly in the column. |
 
 This method needs a more detailed explanation. And the best way to understand it is with a complete example, showing the component and the view. Let's start with the component:
 

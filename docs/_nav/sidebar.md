@@ -15,7 +15,6 @@
 - Advanced
 
   - [Actions](en/advanced/actions.md)
-  - [Delete Dialog](en/advanced/delete-dialog.md)
   - [Authorization](en/advanced/authorization.md)
   - [New resources](en/advanced/new-resources.md)
   - [Relationships](en/advanced/relationships.md)
@@ -23,11 +22,9 @@
 - Custom sections
 
   - [Introduction](en/sections/introduction.md)
-  - [Bulk delete](en/sections/bulk-delete.md)
   - [Export](en/sections/export.md)
 
 - Other features
   
-  - [Helpers](en/others/helpers.md)
   - [Custom assets](en/others/custom-assets.md)
   - [Localization](en/others/localization.md)

@@ -4,14 +4,14 @@ This package need at least:
 
 - `PHP ^8.0`
 - `Laravel ^8.0`
-- `Laravel Livewire ^2.0`
+- `Laravel Livewire ^2.5`
 
 And you will need to add to your template or layout the next `css` and `javascript` libraries:
 
-- `AlpineJS ^2.0`
+- `AlpineJS ^3.0`
 - `TailwindCSS ^2.0`
 
-It will also be necessary to add the styles that the *package* requires, to do that just add in the `<head></head>` the **Blade** directive: `@belichTablesCss`
+It will also be necessary to add the styles that the *package* requires, to do that just add in the `<head></head>` the **Blade** directive: `@liveTablesCss`
 
 For example:
 
@@ -29,7 +29,7 @@ For example:
         <livewire:styles />
 
         <!-- Belich tables styles -->
-        @belichTablesCss
+        @liveTablesCss
 
         <!-- TailwindCSS styles -->
         <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
